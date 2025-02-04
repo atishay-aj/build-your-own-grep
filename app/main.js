@@ -1,10 +1,12 @@
 function matchPattern(inputLine, pattern) {
   if (pattern.length === 1) {
     return inputLine.includes(pattern);
-  }else if(pattern=="\\d"){
+  } else if (pattern == "\\d") {
     return /\d/.test(inputLine)
+  } else if (pattern == "\\w") {
+    return /\w/.test(inputLine)
   }
-   else {
+  else {
     throw new Error(`Unhandled pattern ${pattern}`);
   }
 }
