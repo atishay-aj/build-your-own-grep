@@ -6,7 +6,8 @@ function matchPattern(inputLine, pattern) {
   } else if (pattern == "\\w") {
     return /\w/.test(inputLine)
   }else if (pattern[0] === "[" && pattern[pattern.length - 1] === "]") {
-    return pattern.slice(1, pattern.length - 1).includes(inputLine);
+    const chars= pattern.slice(1,-1)
+    return chars.split("").some(char=> inputLine.includes(char))
   }
   else {
     throw new Error(`Unhandled pattern ${pattern}`);
