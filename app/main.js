@@ -5,12 +5,13 @@ function matchPattern(inputLine, pattern) {
     return /\d/.test(inputLine)
   } else if (pattern == "\\w") {
     return /\w/.test(inputLine)
-  }else if (pattern[0] === "[" && pattern[pattern.length - 1] === "]") {
-    const chars= pattern.slice(1,-1)
-    return chars.split("").some(char=> inputLine.includes(char))
-  }else if (pattern.startsWith("[^") && pattern.endsWith("]")) {
-    const chars= pattern.slice(2,-1)
-    return chars.split("").some(char=> !inputLine.includes(char))
+  } else if (pattern.startsWith("[^") && pattern.endsWith("]")) {
+    const chars = pattern.slice(2, -1)
+    return chars.split("").some(char => !inputLine.includes(char))
+  }
+  else if (pattern[0] === "[" && pattern[pattern.length - 1] === "]") {
+    const chars = pattern.slice(1, -1)
+    return chars.split("").some(char => inputLine.includes(char))
   }
   else {
     throw new Error(`Unhandled pattern ${pattern}`);
